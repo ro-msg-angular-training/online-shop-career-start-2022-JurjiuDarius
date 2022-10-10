@@ -1,0 +1,10 @@
+<p>shopping-cart works!</p>
+
+<div *ngFor="let product of getSelectedProducts()">
+<h2>{{product.name}}</h2>
+<h3>{{product.category}}</h3>
+<h3>{{product.name}}</h3>
+<h3>{{product.quantity}}</h3>
+<button (click)="onCheckout()">Check out</button>
+
+</div>

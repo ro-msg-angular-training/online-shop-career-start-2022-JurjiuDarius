@@ -1,0 +1,9 @@
+<app-product-detail-display
+  [product]="product"
+  (addToCartEvent)="onAddToCart()"
+  (deleteEvent)="onDelete()"
+  (editEvent)="activateEdit()"
+></app-product-detail-display>
+<div *ngIf="editActive">
+  <app-edit-product [product]="product"></app-edit-product>
+</div>

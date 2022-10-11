@@ -1,22 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
 import { AllProductsComponent } from './all-products/all-products.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomePageComponent,
+    redirectTo: 'products',
+    pathMatch: 'full',
   },
   {
     path: 'products',
     component: AllProductsComponent,
     children: [
       {
+        path: 'add',
+        component: AddProductComponent,
+      },
+      {
         path: ':id',
         component: ProductDetailComponent,
+        children: [
+          {
+            path: 'edit',
+            component: EditProductComponent,
+          },
+        ],
       },
     ],
   },
@@ -24,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

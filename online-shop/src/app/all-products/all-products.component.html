@@ -1,10 +1,5 @@
-<p>all-products works!</p>
-
 <router-outlet></router-outlet>
-<div *ngIf="route.children.length === 0">
-<div *ngFor="let product of products | async">
-    <h2><a [routerLink]="['/products',product.id]">{{product.name}}</a></h2>
-    <h3>Category: {{product.category}}</h3>
-    <h3>${{product.price}}</h3>
-</div>
+<div *ngIf="this.route.children.length == 0">
+  <a routerLink="/products/add"> Add a new product</a>
+  <app-all-products-display [products]="products"></app-all-products-display>
 </div>

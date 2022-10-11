@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from './classes';
+import { Product } from '../classes/product';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -16,12 +16,16 @@ export class ProductService {
 
   public getProductById(id: String): Observable<Product> {
     return this.http.get<Product>(this.BASE_URL + '/products/' + id);
-    console.log('getproductCalled');
   }
 
-  public deleteProductById(id: String): void {
-    this.http
-      .delete(this.BASE_URL + '/products/' + id)
-      .subscribe((res) => console.log(res));
+  public deleteProductById(id: String): Observable<any> {
+    return this.http.delete(this.BASE_URL + '/products/' + id);
+  }
+
+  public updateProduct(id: String, product: any): Observable<any> {
+    return this.http.put(this.BASE_URL + '/products/' + id, product);
+  }
+  public addProduct(product: any): Observable<any> {
+    return this.http.post(this.BASE_URL + '/products', product);
   }
 }

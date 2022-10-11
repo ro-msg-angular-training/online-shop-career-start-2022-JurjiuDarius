@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Product } from '../classes';
-import { ProductService } from '../product.service';
+import { Product } from '../classes/product';
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'app-all-products',
   templateUrl: './all-products.component.html',
-  styleUrls: ['./all-products.component.sass']
 })
 export class AllProductsComponent implements OnInit {
+  products: Product[] = [];
 
-  products:Observable<Product[]>|undefined;
-
-  constructor(private productService:ProductService,public route:ActivatedRoute) { }
+  constructor(
+    private productService: ProductService,
+    public route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.products=this.productService.getProducts();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.productService.getProducts().subscribe((res) => (this.products = res));
   }
-
-  
-
 }

@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from './classes';
-import { ProductPostTemplate } from './classes';
+import { Product } from '../classes/product';
 
 @Injectable({
   providedIn: 'root',
@@ -14,22 +13,21 @@ export class CartService {
   constructor(private http: HttpClient) {}
 
   addProductToCart(product: Product) {
-    let alreadyExists: boolean = false;
-    for (let item of this.selectedProducts) {
-      if (item.id == product.id) {
-        item.quantity += 1;
-        alreadyExists = true;
-      }
-    }
-    if (!alreadyExists) {
+    let alreadyExists = this.selectedProducts.find(function (element) {
+      return element.id == product.id;
+    });
+
+    if (alreadyExists === undefined) {
       product.quantity = 1;
       this.selectedProducts?.push(product);
+    } else {
+      alreadyExists.quantity += 1;
     }
   }
   public getSelectedProducts(): Product[] {
     return this.selectedProducts;
   }
-  public checkOut() {
+  public checkOut(): Observable<Product[]> {
     let productTemplateList = [];
     for (let product of this.selectedProducts) {
       let productTemplate = {
@@ -41,6 +39,6 @@ export class CartService {
 
     let body = { customer: 'blackj', products: productTemplateList };
 
-    this.http.post(this.BASE_URL + '/orders', body);
+    return this.http.post<Product[]>(this.BASE_URL + '/orders', body);
   }
 }

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CartService } from '../cart.service';
-import { Product } from '../classes';
+import { CartService } from './cart.service';
+import { Product } from '../classes/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.sass'],
 })
 export class ShoppingCartComponent implements OnInit {
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -17,6 +17,9 @@ export class ShoppingCartComponent implements OnInit {
     return this.cartService.getSelectedProducts();
   }
   public onCheckout(): void {
-    this.cartService.checkOut();
+    this.cartService.checkOut().subscribe(
+      (res) => this.router.navigate(['/products']),
+      (err) => this.router.navigate(['/products'])
+    );
   }
 }

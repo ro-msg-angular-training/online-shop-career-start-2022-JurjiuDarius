@@ -15,15 +15,15 @@ export class ShoppingCartComponent {
     return this.cartService.getSelectedProducts();
   }
   public onCheckout(): void {
-    this.cartService.checkOut().subscribe(
-      (res) => {
+    this.cartService.checkOut().subscribe({
+      next: (res) => {
         this.cartService.clearCart();
         this.router.navigate(['/products']);
       },
-      (err) => {
+      error: (err) => {
         this.cartService.clearCart();
         this.router.navigate(['/products']);
-      }
-    );
+      },
+    });
   }
 }

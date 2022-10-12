@@ -4,6 +4,7 @@ import { User } from '../classes/user';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserDetail } from '../classes/user-detail';
+import { CartService } from '../shopping-cart/cart.service';
 enum Roles {
   ADMIN,
   USER,
@@ -15,10 +16,17 @@ enum Roles {
 })
 export class AuthService {
   readonly BASE_URL = 'http://localhost:3000';
-  roles: String[] = [];
-  redirectUrl: String = '';
-  constructor(private http: HttpClient, private router: Router) {
+  private roles: String[] = [];
+  private redirectUrl: String = '';
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private cartService: CartService
+  ) {
     this.roles = JSON.parse(String(localStorage.getItem('roles')));
+    if (!this.roles) {
+      this.roles = [];
+    }
   }
 
   logIn(user: User): Observable<UserDetail> {
@@ -42,10 +50,8 @@ export class AuthService {
   }
 
   public hasGivenRole(givenRole: String): boolean {
-    for (let role of this.roles) {
-      if (role == givenRole) {
-        return true;
-      }
+    if (this.roles.find((element) => element == givenRole) != undefined) {
+      return true;
     }
     return false;
   }
@@ -56,6 +62,7 @@ export class AuthService {
 
   public logOut(): void {
     this.roles = [];
-    localStorage.setItem('roles', JSON.stringify([]));
+    this.cartService.clearCart();
+    localStorage.removeItem('roles');
   }
 }

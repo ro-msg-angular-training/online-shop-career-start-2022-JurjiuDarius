@@ -43,7 +43,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onDelete(): void {
-    if (this.product !== undefined) {
+    if (this.product !== undefined && this.product.id != undefined) {
       this.productService
         .deleteProductById(this.product.id)
         .subscribe(() => this.router.navigate(['/products']));

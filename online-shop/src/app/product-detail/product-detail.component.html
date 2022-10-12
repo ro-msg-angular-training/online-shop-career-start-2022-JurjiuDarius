@@ -3,7 +3,8 @@
   (addToCartEvent)="onAddToCart()"
   (deleteEvent)="onDelete()"
   (editEvent)="activateEdit()"
-  [authService]="authService"
+  [isAdmin]="authService.hasGivenRole('admin')"
+  [isCustomer]="authService.hasGivenRole('customer')"
 ></app-product-detail-display>
 <div *ngIf="editActive">
   <app-edit-product [product]="product"></app-edit-product>

@@ -10,5 +10,5 @@ export class AllProductsDisplayComponent {
   @Input()
   products: Product[] = [];
   @Input()
-  authService: AuthService | undefined;
+  canAdd: boolean | undefined;
 }

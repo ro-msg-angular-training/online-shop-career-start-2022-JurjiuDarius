@@ -10,7 +10,11 @@ export class ProductDetailDisplayComponent {
   @Input()
   product: Product | undefined;
   @Input()
-  authService: AuthService | undefined;
+  isAdmin: boolean | undefined;
+  @Input()
+  isCustomer: boolean | undefined;
+  @Input()
+  isUser: boolean | undefined;
   @Output()
   deleteEvent = new EventEmitter();
   @Output()

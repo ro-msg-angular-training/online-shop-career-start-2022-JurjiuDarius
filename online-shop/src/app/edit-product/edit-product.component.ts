@@ -70,13 +70,11 @@ export class EditProductComponent {
     }
     this.activatedRoute.params.subscribe((params) => (id = params['id']));
     let product = {
-      id: id,
       name: this.formGroup.get('name')?.value,
       category: this.formGroup.get('category')?.value,
       price: Number(this.formGroup.get('price')?.value),
       description: this.formGroup.get('description')?.value,
       image: this.formGroup.get('image')?.value,
-      quantity: 0,
     };
 
     this.productService.updateProduct(id, product).subscribe(() => {

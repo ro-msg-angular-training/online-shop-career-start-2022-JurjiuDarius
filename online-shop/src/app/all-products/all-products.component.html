@@ -2,6 +2,6 @@
 <div *ngIf="this.route.children.length == 0">
   <app-all-products-display
     [products]="products"
-    [authService]="authService"
+    [canAdd]="authService.hasGivenRole('admin')"
   ></app-all-products-display>
 </div>

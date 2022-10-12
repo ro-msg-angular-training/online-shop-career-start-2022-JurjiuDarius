@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AllProductsComponent } from './all-products/all-products.component';
-import { AuthChildGuard } from './auth/auth-child.guard';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
@@ -19,8 +18,7 @@ const routes: Routes = [
   {
     path: 'products',
     component: AllProductsComponent,
-    canActivateChild: [AuthChildGuard],
-    data: { roles: [] },
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'add',

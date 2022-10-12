@@ -64,13 +64,11 @@ export class AddProductComponent {
       alert('The data you have put in is invalid!');
     }
     let product = {
-      id: '0',
       name: this.formGroup.get('name')?.value,
       category: this.formGroup.get('category')?.value,
       price: Number(this.formGroup.get('price')?.value),
       description: this.formGroup.get('description')?.value,
       image: this.formGroup.get('image')?.value,
-      quantity: 0,
     };
     this.productService.addProduct(product).subscribe(() => {
       this.router.navigate(['/products']);

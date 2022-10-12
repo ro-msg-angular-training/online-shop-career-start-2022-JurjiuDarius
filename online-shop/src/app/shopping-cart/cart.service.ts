@@ -21,7 +21,9 @@ export class CartService {
       product.quantity = 1;
       this.selectedProducts?.push(product);
     } else {
-      alreadyExists.quantity += 1;
+      if (alreadyExists.quantity != undefined) {
+        alreadyExists.quantity += 1;
+      }
     }
   }
   public getSelectedProducts(): Product[] {

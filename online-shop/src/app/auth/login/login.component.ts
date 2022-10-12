@@ -27,15 +27,15 @@ export class LoginComponent {
       password: this.formGroup.get('password')?.value,
     };
     let request = this.authService.logIn(user);
-    request.subscribe(
-      (res) => {
+    request.subscribe({
+      next: (res) => {
         this.authService.setRoles(res.roles);
         localStorage.setItem('roles', JSON.stringify(res.roles));
         this.router.navigate([this.authService.getRedirectUrl()]);
       },
-      (err) => {
+      error: (err) => {
         alert('Invalid credentials!');
-      }
-    );
+      },
+    });
   }
 }

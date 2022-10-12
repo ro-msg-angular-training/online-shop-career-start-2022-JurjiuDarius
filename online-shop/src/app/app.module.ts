@@ -14,6 +14,8 @@ import { ProductDetailDisplayComponent } from './product-detail-display/product-
 import { ShoppingCartDisplayComponent } from './shopping-cart-display/shopping-cart-display.component';
 import { EditProductDisplayComponent } from './edit-product-display/edit-product-display.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { LoginComponent } from './auth/login/login.component';
+import { LoginDisplayComponent } from './auth/login-display/login-display.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     ShoppingCartDisplayComponent,
     EditProductDisplayComponent,
     AddProductComponent,
+    LoginComponent,
+    LoginDisplayComponent,
   ],
   imports: [
     BrowserModule,

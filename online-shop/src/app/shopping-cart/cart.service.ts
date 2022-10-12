@@ -41,4 +41,7 @@ export class CartService {
 
     return this.http.post<Product[]>(this.BASE_URL + '/orders', body);
   }
+  public clearCart() {
+    this.selectedProducts = [];
+  }
 }

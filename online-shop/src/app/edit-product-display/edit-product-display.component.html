@@ -1,4 +1,4 @@
-<form (ngSubmit)="onParentSubmit()" [formGroup]="formGroup">
+<form *ngIf="formGroup" (ngSubmit)="onParentSubmit()" [formGroup]="formGroup">
   <label for="name">Name: </label>
   <input
     id="name"
@@ -39,5 +39,10 @@
     value="{{ product?.image }}"
   />
 
-  <input type="submit" class="forsubmit" value="Submit" />
+  <input
+    type="submit"
+    class="forsubmit"
+    value="Submit"
+    [disabled]="!formGroup.valid"
+  />
 </form>

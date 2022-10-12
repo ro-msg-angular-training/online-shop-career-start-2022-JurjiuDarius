@@ -22,10 +22,10 @@ export class ProductService {
     return this.http.delete(this.BASE_URL + '/products/' + id);
   }
 
-  public updateProduct(id: String, product: any): Observable<any> {
+  public updateProduct(id: String, product: Product): Observable<any> {
     return this.http.put(this.BASE_URL + '/products/' + id, product);
   }
-  public addProduct(product: any): Observable<any> {
+  public addProduct(product: Product): Observable<any> {
     return this.http.post(this.BASE_URL + '/products', product);
   }
 }

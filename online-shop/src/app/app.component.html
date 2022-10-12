@@ -1,3 +1,9 @@
-<p><a routerLink="/cart">Go to cart</a></p>
 <p><a routerLink="">Home</a></p>
+<p>
+  <a routerLink="/cart" *ngIf="authService?.hasGivenRole('customer')"
+    >Go to cart</a
+  >
+</p>
+<a routerLink="/login" *ngIf="!authService.isLoggedIn()">Log in</a>
+<button (click)="onLogOut()" *ngIf="authService.isLoggedIn()">Log Out</button>
 <router-outlet></router-outlet>

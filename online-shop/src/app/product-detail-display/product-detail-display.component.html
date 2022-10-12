@@ -5,9 +5,21 @@
   <h3>${{ product.description }}</h3>
   <img src="{{ product.image }}" />
   <h3>
-    <button (click)="parentOnActivateEdit()">Edit this product</button>
+    <button
+      (click)="parentOnActivateEdit()"
+      *ngIf="authService?.hasGivenRole('admin')"
+    >
+      Edit this product
+    </button>
   </h3>
   <h3><a routerLink="/products">Back to all products</a></h3>
-  <button (click)="parentOnAddToCart()">Add to cart</button>
-  <button (click)="parentOnDelete()">Delete this product</button>
+  <button
+    (click)="parentOnAddToCart()"
+    *ngIf="authService?.hasGivenRole('customer')"
+  >
+    Add to cart
+  </button>
+  <button (click)="parentOnDelete()" *ngIf="authService?.hasGivenRole('admin')">
+    Delete this product
+  </button>
 </div>

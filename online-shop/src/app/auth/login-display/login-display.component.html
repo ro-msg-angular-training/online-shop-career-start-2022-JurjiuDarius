@@ -1,0 +1,13 @@
+<form (ngSubmit)="onParentSubmit()" [formGroup]="formGroup">
+  <label for="username">Username: </label>
+  <input id="username" type="text" formControlName="username" />
+
+  <label for="password">Password: </label>
+  <input id="password" type="text" formControlName="password" />
+  <input
+    type="submit"
+    class="forsubmit"
+    value="Submit"
+    [disabled]="!formGroup.valid"
+  />
+</form>

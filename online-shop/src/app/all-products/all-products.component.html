@@ -1,5 +1,7 @@
 <router-outlet></router-outlet>
 <div *ngIf="this.route.children.length == 0">
-  <a routerLink="/products/add"> Add a new product</a>
-  <app-all-products-display [products]="products"></app-all-products-display>
+  <app-all-products-display
+    [products]="products"
+    [canAdd]="authService.hasGivenRole('admin')"
+  ></app-all-products-display>
 </div>

@@ -6,15 +6,11 @@ import { Product } from '../classes/product';
   templateUrl: './shopping-cart-display.component.html',
   styleUrls: ['./shopping-cart-display.component.sass'],
 })
-export class ShoppingCartDisplayComponent implements OnInit {
+export class ShoppingCartDisplayComponent {
   @Input()
   products: Product[] = [];
   @Output()
   checkoutEvent = new EventEmitter();
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   onParentCheckout() {
     this.checkoutEvent.emit();

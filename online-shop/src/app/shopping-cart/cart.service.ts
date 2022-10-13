@@ -21,7 +21,9 @@ export class CartService {
       product.quantity = 1;
       this.selectedProducts?.push(product);
     } else {
-      alreadyExists.quantity += 1;
+      if (alreadyExists.quantity != undefined) {
+        alreadyExists.quantity += 1;
+      }
     }
   }
   public getSelectedProducts(): Product[] {
@@ -40,5 +42,8 @@ export class CartService {
     let body = { customer: 'blackj', products: productTemplateList };
 
     return this.http.post<Product[]>(this.BASE_URL + '/orders', body);
+  }
+  public clearCart() {
+    this.selectedProducts = [];
   }
 }

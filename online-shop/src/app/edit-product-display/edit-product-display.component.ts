@@ -6,16 +6,14 @@ import { Product } from '../classes/product';
   selector: 'app-edit-product-display',
   templateUrl: './edit-product-display.component.html',
 })
-export class EditProductDisplayComponent implements OnInit {
+export class EditProductDisplayComponent {
   @Input()
-  formGroup: any;
+  formGroup: FormGroup | undefined;
   @Input()
   product: Product | undefined;
   @Output()
   submitEvent = new EventEmitter();
-  constructor() {}
 
-  ngOnInit(): void {}
   onParentSubmit() {
     this.submitEvent.emit();
   }

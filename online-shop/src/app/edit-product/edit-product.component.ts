@@ -13,8 +13,8 @@ import { switchMap } from 'rxjs';
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
 })
-export class EditProductComponent implements OnInit {
-  formGroup: any;
+export class EditProductComponent {
+  formGroup: FormGroup;
   @Input()
   product: Product | undefined;
   constructor(
@@ -22,31 +22,61 @@ export class EditProductComponent implements OnInit {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  ) {
     this.formGroup = this.fb.group({
-      name: ['', Validators.required],
-      category: ['', Validators.required],
-      price: ['', Validators.required],
-      description: ['', Validators.required],
-      image: ['', Validators.required],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
+      category: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
+      price: [
+        '',
+        [Validators.required, Validators.min(1), Validators.max(100000)],
+      ],
+      description: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(300),
+        ],
+      ],
+      image: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(100),
+        ],
+      ],
     });
   }
 
   onSave() {
     let id = '';
+    if (!this.formGroup.valid) {
+      alert('The data you have put in is invalid!');
+    }
     this.activatedRoute.params.subscribe((params) => (id = params['id']));
     let product = {
-      id: id,
       name: this.formGroup.get('name')?.value,
       category: this.formGroup.get('category')?.value,
       price: Number(this.formGroup.get('price')?.value),
       description: this.formGroup.get('description')?.value,
       image: this.formGroup.get('image')?.value,
     };
-    console.log(id);
+
     this.productService.updateProduct(id, product).subscribe(() => {
       this.router.navigate(['/products/', id]);
     });

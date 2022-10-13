@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { Product } from '../classes/product';
 import { ProductService } from './product.service';
 
@@ -14,7 +15,8 @@ export class AllProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     public route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {

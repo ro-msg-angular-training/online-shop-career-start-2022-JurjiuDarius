@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, startWith, switchMap } from 'rxjs';
 import { CartService } from '../shopping-cart/cart.service';
 import { Product } from '../classes/product';
 import { ProductService } from '../all-products/product.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,17 +19,17 @@ export class ProductDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    let product$ = this.activatedRoute.paramMap.pipe(
-      switchMap((params) => {
-        let id = String(params.get('id'));
-        return this.productService.getProductById(id);
-      })
-    );
-    product$.subscribe((res) => (this.product = res));
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id != null) {
+      this.productService
+        .getProductById(id)
+        .subscribe((res) => (this.product = res));
+    }
   }
 
   activateEdit() {
@@ -42,7 +43,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onDelete(): void {
-    if (this.product !== undefined) {
+    if (this.product !== undefined && this.product.id != undefined) {
       this.productService
         .deleteProductById(this.product.id)
         .subscribe(() => this.router.navigate(['/products']));

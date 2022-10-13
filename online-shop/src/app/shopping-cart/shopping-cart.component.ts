@@ -8,18 +8,22 @@ import { Router } from '@angular/router';
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent {
   constructor(private cartService: CartService, private router: Router) {}
-
-  ngOnInit(): void {}
 
   public getSelectedProducts(): Product[] {
     return this.cartService.getSelectedProducts();
   }
   public onCheckout(): void {
-    this.cartService.checkOut().subscribe(
-      (res) => this.router.navigate(['/products']),
-      (err) => this.router.navigate(['/products'])
-    );
+    this.cartService.checkOut().subscribe({
+      next: (res) => {
+        this.cartService.clearCart();
+        this.router.navigate(['/products']);
+      },
+      error: (err) => {
+        this.cartService.clearCart();
+        this.router.navigate(['/products']);
+      },
+    });
   }
 }

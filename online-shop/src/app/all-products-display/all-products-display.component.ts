@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import { Product } from '../classes/product';
 
 @Component({
   selector: 'app-all-products-display',
   templateUrl: './all-products-display.component.html',
 })
-export class AllProductsDisplayComponent implements OnInit {
+export class AllProductsDisplayComponent {
   @Input()
   products: Product[] = [];
-  constructor() {}
-
-  ngOnInit(): void {}
+  @Input()
+  canAdd: boolean | undefined;
 }

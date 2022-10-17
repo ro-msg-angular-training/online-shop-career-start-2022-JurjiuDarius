@@ -1,16 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { User } from '../classes/user';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserDetail } from '../classes/user-detail';
 import { CartService } from '../cart/components/shopping-cart/cart.service';
-enum Roles {
-  ADMIN,
-  USER,
-  CUSTOMER,
-  NONE,
-}
+import { User } from '../classes/user';
+import { UserDetail } from '../classes/user-detail';
+
 @Injectable({
   providedIn: 'root',
 })

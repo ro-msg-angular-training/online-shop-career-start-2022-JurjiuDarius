@@ -1,4 +1,3 @@
-import { state } from '@angular/animations';
 import { createReducer, on } from '@ngrx/store';
 import { Product } from 'src/app/classes/product';
 import {
@@ -8,31 +7,36 @@ import {
   getAllProducts,
   getAllProductsSuccess,
 } from './all-products-actions';
+export enum ProductsStatus {
+  SUCCESS = 'success',
+  PENDING = 'pending',
+  ERROR = 'error',
+}
 export interface ProductsState {
   products: Product[];
-  status: 'success' | 'pending' | 'error';
+  status: ProductsStatus;
 }
 export const initialProductsState: ProductsState = {
   products: [],
-  status: 'pending',
+  status: ProductsStatus.SUCCESS,
 };
 
 export const allProductsReducer = createReducer(
   initialProductsState,
-  on(addProduct, (state) => ({ ...state, status: 'pending' })),
+  on(addProduct, (state) => ({ ...state, status: ProductsStatus.PENDING })),
   on(addProductSuccess, (state, { product }) => ({
     ...state,
-    status: 'success',
+    status: ProductsStatus.SUCCESS,
     products: [...state.products, product],
   })),
   on(addProductFailure, (state, { error }) => ({
     ...state,
-    status: 'error',
+    status: ProductsStatus.ERROR,
     error: error,
   })),
-  on(getAllProducts, (state) => ({ ...state, status: 'pending' })),
+  on(getAllProducts, (state) => ({ ...state, status: ProductsStatus.PENDING })),
   on(getAllProductsSuccess, (state, { products }) => ({
-    status: 'success',
+    status: ProductsStatus.SUCCESS,
     products: products,
   }))
 );

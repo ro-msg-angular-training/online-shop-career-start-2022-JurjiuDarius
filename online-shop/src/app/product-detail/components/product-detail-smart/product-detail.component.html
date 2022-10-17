@@ -3,8 +3,8 @@
   (addToCartEvent)="onAddToCart()"
   (deleteEvent)="onDelete()"
   (editEvent)="activateEdit()"
-  [isAdmin]="hasGivenRole('admin')"
-  [isCustomer]="hasGivenRole('customer')"
+  [isAdmin]="hasGivenRole(rolesEnum.ADMIN)"
+  [isCustomer]="hasGivenRole(rolesEnum.CUSTOMER)"
   [status]="($status | async) || 'error'"
 ></app-product-detail-display>
 <div *ngIf="product && editActive$ | async">

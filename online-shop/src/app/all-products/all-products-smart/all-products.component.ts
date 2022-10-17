@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 import { hasGivenRole } from '../../auth/state/auth-selectors';
 import { Product } from '../../classes/product';
-import { addProduct, getAllProducts } from '../state/all-products-actions';
+import { getAllProducts } from '../state/all-products-actions';
 import {
   selectAllProducts,
   selectProductsStatus,

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
+import { Router } from '@angular/router';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, switchMap, map, of } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { ProductService } from 'src/app/all-products/all-products-smart/product.service';
 import {
   deleteProduct,
@@ -21,7 +22,8 @@ export class ProductEffects {
   constructor(
     private actions$: Actions,
     private store: Store<ProductState>,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) {}
 
   loadProduct$ = createEffect(() =>
@@ -41,7 +43,10 @@ export class ProductEffects {
       ofType(deleteProduct),
       switchMap((action) =>
         this.productService.deleteProductById(action.id).pipe(
-          map(() => deleteProductSuccess()),
+          map(() => {
+            this.router.navigate(['/products']);
+            return deleteProductSuccess();
+          }),
           catchError((error) => of(deleteProductFailure({ error: error })))
         )
       )

@@ -1,4 +1,4 @@
-<div *ngIf="status == 'success'">
+<div *ngIf="status == statusEnum.SUCCESS">
   <div *ngFor="let product of products">
     <h2>{{ product.name }}</h2>
     <h3>{{ product.category }}</h3>
@@ -6,9 +6,9 @@
     <h3>{{ product.quantity }}</h3>
   </div>
 </div>
-<div *ngIf="status == 'pending'">Loading page...</div>
-<div *ngIf="status == 'processing'">Processing...</div>
-<div *ngIf="status == 'error'">An error has occured.</div>
+<div *ngIf="status == statusEnum.PENDING">Loading page...</div>
+<div *ngIf="status == statusEnum.PROCESSING">Processing...</div>
+<div *ngIf="status == statusEnum.ERROR">An error has occured.</div>
 
 <button *ngIf="products.length !== 0" (click)="onParentCheckout()">
   Check out

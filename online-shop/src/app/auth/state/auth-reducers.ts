@@ -1,17 +1,29 @@
-import { state } from '@angular/animations';
 import { createReducer, on } from '@ngrx/store';
 import { logIn, logInFailure, logInSuccess, logOut } from './auth-actions';
+
+export enum Roles {
+  ADMIN = 'admin',
+  USER = 'user',
+  CUSTOMER = 'customer',
+  NONE = 'none',
+}
+export enum AuthStatus {
+  LOGGED_IN = 'logged in',
+  LOGGED_OUT = 'logged out',
+  PENDING = 'pending',
+  ERROR = 'error',
+}
 
 export interface AuthState {
   roles: String[];
   username: String;
-  status: 'loggged in' | 'logged out' | 'pending' | 'error';
+  status: AuthStatus;
 }
 
 export const initialAuthState: AuthState = {
   roles: [],
   username: '',
-  status: 'logged out',
+  status: AuthStatus.LOGGED_OUT,
 };
 
 export const authReducer = createReducer(
@@ -19,18 +31,22 @@ export const authReducer = createReducer(
   on(logIn, (state, { user }) => ({
     ...state,
     username: user.username,
-    status: 'pending',
+    status: AuthStatus.PENDING,
   })),
   on(logInSuccess, (state, { roles, username }) => ({
     ...state,
     roles: roles,
     username: username,
-    status: 'loggged in',
+    status: AuthStatus.LOGGED_IN,
   })),
   on(logInFailure, (state, { error }) => ({
     ...state,
     error: error,
-    status: 'error',
+    status: AuthStatus.ERROR,
   })),
-  on(logOut, (state) => ({ roles: [], username: '', status: 'logged out' }))
+  on(logOut, (state) => ({
+    roles: [],
+    username: '',
+    status: AuthStatus.LOGGED_OUT,
+  }))
 );

@@ -1,5 +1,5 @@
-import { Product } from 'src/app/classes/product';
 import { createReducer, on } from '@ngrx/store';
+import { Product } from 'src/app/classes/product';
 import {
   activateEdit,
   deleteProduct,
@@ -10,13 +10,18 @@ import {
   loadProduct,
   loadProductSuccess,
 } from './product-detail-actions';
-import { state } from '@angular/animations';
 
+export enum ProductStatus {
+  SUCCESS = 'success',
+  LOADING = 'loading',
+  PENDING = 'pending',
+  ERROR = 'error',
+}
 export interface ProductState {
   product: Product;
   error: String | null;
   editActive: boolean;
-  status: 'pending' | 'loading' | 'error' | 'success';
+  status: ProductStatus;
 }
 export const initialProduct: Product = {
   name: '',
@@ -27,37 +32,40 @@ export const initialProductState: ProductState = {
   product: initialProduct,
   editActive: false,
   error: '',
-  status: 'success',
+  status: ProductStatus.SUCCESS,
 };
 
 export const productDetailReducer = createReducer(
   initialProductState,
-  on(loadProduct, (state) => ({ ...state, status: 'loading' })),
+  on(loadProduct, (state) => ({ ...state, status: ProductStatus.LOADING })),
 
   on(loadProductSuccess, (state, { loadedProduct }) => ({
     ...state,
     error: null,
-    status: 'success',
+    status: ProductStatus.SUCCESS,
     product: loadedProduct,
   })),
 
   on(activateEdit, (state) => ({ ...state, editActive: true })),
-  on(deleteProduct, (state) => ({ ...state, status: 'pending' })),
-  on(deleteProductSuccess, (state) => ({ ...state, status: 'success' })),
+  on(deleteProduct, (state) => ({ ...state, status: ProductStatus.PENDING })),
+  on(deleteProductSuccess, (state) => ({
+    ...state,
+    status: ProductStatus.SUCCESS,
+  })),
   on(deleteProductFailure, (state, { error }) => ({
     ...state,
-    status: 'error',
+    status: ProductStatus.ERROR,
     error: error,
   })),
-  on(editProduct, (state) => ({ ...state, status: 'pending' })),
+  on(editProduct, (state) => ({ ...state, status: ProductStatus.PENDING })),
   on(editProduct, (state, { product }) => ({
     ...state,
-    status: 'success',
+    status: ProductStatus.SUCCESS,
     product: product,
   })),
   on(editProductFailure, (state, { error }) => ({
     ...state,
-    status: 'error',
+    status: ProductStatus.ERROR,
     error: error,
   }))
 );

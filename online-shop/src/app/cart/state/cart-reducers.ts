@@ -1,5 +1,5 @@
-import { Product } from 'src/app/classes/product';
 import { createReducer, on } from '@ngrx/store';
+import { Product } from 'src/app/classes/product';
 import {
   addToCart,
   checkout,
@@ -7,37 +7,46 @@ import {
   checkoutSuccess,
   clearCart,
 } from './cart-actions';
-
+export enum CartStatus {
+  SUCCESS = 'success',
+  ERROR = 'error',
+  PENDING = 'pending',
+  PROCESSING = 'processing',
+}
 export interface CartState {
   products: Product[];
-  status: 'error' | 'pending' | 'success' | 'processing';
+  status: CartStatus;
   error: String | null;
 }
 
 export const initialCartState: CartState = {
   products: [],
-  status: 'success',
+  status: CartStatus.SUCCESS,
   error: null,
 };
 
 export const cartReducer = createReducer(
   initialCartState,
-  on(checkout, (state) => ({ ...state, status: 'processing' })),
-  on(clearCart, (state) => ({ ...state, status: 'success', products: [] })),
+  on(checkout, (state) => ({ ...state, status: CartStatus.PROCESSING })),
+  on(clearCart, (state) => ({
+    ...state,
+    status: CartStatus.SUCCESS,
+    products: [],
+  })),
   on(checkoutSuccess, (state) => ({
     ...state,
-    status: 'success',
+    status: CartStatus.SUCCESS,
     products: [],
   })),
   //The http response that is returned cannot be parsed as json, which always gives an error. That's why the error and success order creation actions are the same.
   on(checkoutFailure, (state, { error }) => ({
     ...state,
-    status: 'success',
+    status: CartStatus.SUCCESS,
     products: [],
   })),
   on(addToCart, (state, { product }) => ({
     ...state,
-    status: 'pending',
+    status: CartStatus.SUCCESS,
     products: ((products: Product[], addedProduct: Product) => {
       let newProducts = [];
       let exists = false;

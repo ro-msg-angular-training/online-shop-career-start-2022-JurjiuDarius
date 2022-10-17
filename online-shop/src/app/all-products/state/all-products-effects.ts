@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, of, switchMap, map } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { ProductService } from '../all-products-smart/product.service';
 import {
   addProduct,
@@ -18,7 +19,8 @@ export class AllProductsEffects {
   constructor(
     private actions$: Actions,
     private productService: ProductService,
-    private store: Store<ProductsState>
+    private store: Store<ProductsState>,
+    private router: Router
   ) {}
 
   $addProduct = createEffect(() =>
@@ -26,7 +28,10 @@ export class AllProductsEffects {
       ofType(addProduct),
       switchMap((action) =>
         this.productService.addProduct(action.product).pipe(
-          map((result) => addProductSuccess({ product: result })),
+          map((result) => {
+            this.router.navigate(['/products']);
+            return addProductSuccess({ product: result });
+          }),
           catchError((error) => of(addProductFailure({ error: error })))
         )
       )

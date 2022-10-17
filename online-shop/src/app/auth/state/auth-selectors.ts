@@ -1,4 +1,3 @@
-import { Statement } from '@angular/compiler';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AuthState } from './auth-reducers';
 
@@ -9,7 +8,7 @@ export const selectRoles = createSelector(
 );
 export const selectIsLoggedIn = createSelector(
   authSelector,
-  (state: AuthState) => state.status == 'loggged in'
+  (state: AuthState) => state.status == 'logged in'
 );
 
 export const hasGivenRole = (role: String) =>

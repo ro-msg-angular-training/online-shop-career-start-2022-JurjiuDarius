@@ -1,4 +1,4 @@
-<div *ngIf="product != undefined && status == 'success'">
+<div *ngIf="product != undefined && status == statusEnum.SUCCESS">
   <h2>{{ product.name }}</h2>
   <h3>Category: {{ product.category }}</h3>
   <h3>${{ product.price }}</h3>
@@ -15,5 +15,5 @@
     Delete this product
   </button>
 </div>
-<div *ngIf="status == 'pending'">Page is loading...</div>
-<div *ngIf="status == 'error'">An error has occured.</div>
+<div *ngIf="status == 'statusEnum.PENDING'">Page is loading...</div>
+<div *ngIf="status == 'statusEnum.ERROR'">An error has occured.</div>

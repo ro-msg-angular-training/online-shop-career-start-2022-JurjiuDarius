@@ -1,4 +1,4 @@
-<div *ngIf="status === 'success'">
+<div *ngIf="status == statusEnum.SUCCESS">
   <a routerLink="/products/add" *ngIf="canAdd"> Add a new product</a>
   <div *ngFor="let product of products">
     <h2>
@@ -8,4 +8,4 @@
     <h3>${{ product.price }}</h3>
   </div>
 </div>
-<div *ngIf="status === 'pending'">Loading page...</div>
+<div *ngIf="status == statusEnum.PENDING">Loading page...</div>

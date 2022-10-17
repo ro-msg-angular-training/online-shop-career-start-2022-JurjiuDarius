@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../../classes/product';
+import { ProductStatus } from '../../state/product-detail-reducer';
 
 @Component({
   selector: 'app-product-detail-display',
   templateUrl: './product-detail-display.component.html',
 })
 export class ProductDetailDisplayComponent {
+  statusEnum = ProductStatus;
   @Input()
   product: Product | null | undefined;
   @Input()

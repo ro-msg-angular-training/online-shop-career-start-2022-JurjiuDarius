@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { Roles } from 'src/app/auth/state/auth-reducers';
 import { selectRoles } from 'src/app/auth/state/auth-selectors';
 import { addToCart } from 'src/app/cart/state/cart-actions';
-import { ProductService } from '../../../all-products/all-products-smart/product.service';
-import { CartService } from '../../../cart/components/shopping-cart/cart.service';
 import { Product } from '../../../classes/product';
 import {
   activateEdit,
@@ -17,12 +16,12 @@ import {
   selectProductDisplay,
   selectProductStatus,
 } from '../../state/product-detail-selectors';
-
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
+  rolesEnum = Roles;
   public editActive$: Observable<boolean> | undefined;
   $status: Observable<String> | undefined;
   private productSubscription: Subscription | undefined;
@@ -31,13 +30,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   roles: String[] | undefined;
   public product: Product | undefined;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private productService: ProductService,
-    private cartService: CartService,
-    private router: Router,
-    private store: Store
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute, private store: Store) {}
 
   ngOnInit(): void {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -51,7 +44,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.$status = this.store.select(selectProductStatus);
   }
 
-  hasGivenRole(role: String): boolean {
+  hasGivenRole(role: Roles): boolean {
     return this.roles?.find((elem) => elem == role) != undefined;
   }
 
@@ -70,7 +63,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   onDelete(): void {
     if (this.product != undefined) {
       this.store.dispatch(deleteProduct({ id: String(this.product.id) }));
-      this.router.navigate(['/products']);
     }
   }
   ngOnDestroy(): void {

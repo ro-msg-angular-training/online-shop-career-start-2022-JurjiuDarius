@@ -1,7 +1,10 @@
 <p><a routerLink="">Home</a></p>
+
 <p>
-  <a routerLink="/cart" *ngIf="isCustomer() | async">Go to cart</a>
+  <a routerLink="/cart" *ngIf="isCustomer$ | async">Go to cart</a>
 </p>
-<a routerLink="/login" *ngIf="!(isLoggedIn$ | async)">Log in</a>
-<button (click)="onLogOut()" *ngIf="isLoggedIn$ | async">Log Out</button>
+<div *ngIf="{ value: isLoggedIn$ | async } as context">
+  <a routerLink="/login" *ngIf="!context.value">Log in</a>
+  <button mat-button (click)="onLogOut()" *ngIf="context.value">Log Out</button>
+</div>
 <router-outlet></router-outlet>

@@ -1,13 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
-import { ProductService } from '../all-products/all-products-smart/product.service';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Product } from '../classes/product';
+import { Store } from '@ngrx/store';
+import { ProductService } from '../all-products-smart/product.service';
+import { addProduct } from '../state/all-products-actions';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -17,7 +13,8 @@ export class AddProductComponent {
   constructor(
     private fb: FormBuilder,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {
     this.formGroup = this.fb.group({
       name: [
@@ -70,8 +67,6 @@ export class AddProductComponent {
       description: this.formGroup.get('description')?.value,
       image: this.formGroup.get('image')?.value,
     };
-    this.productService.addProduct(product).subscribe(() => {
-      this.router.navigate(['/products']);
-    });
+    this.store.dispatch(addProduct({ product }));
   }
 }

@@ -1,8 +1,0 @@
-<a routerLink="/products/add" *ngIf="canAdd"> Add a new product</a>
-<div *ngFor="let product of products">
-  <h2>
-    <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
-  </h2>
-  <h3>Category: {{ product.category }}</h3>
-  <h3>${{ product.price }}</h3>
-</div>

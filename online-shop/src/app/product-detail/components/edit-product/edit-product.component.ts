@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {
   FormGroup,
   FormControl,
   FormBuilder,
   Validators,
 } from '@angular/forms';
-import { ProductService } from '../all-products/all-products-smart/product.service';
-import { Router } from '@angular/router';
-import { Product } from '../classes/product';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from '../../../classes/product';
+import { ProductService } from '../../../all-products/all-products-smart/product.service';
+import { switchMap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { editProduct } from '../../state/product-detail-actions';
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
 })
-export class AddProductComponent {
+export class EditProductComponent {
   formGroup: FormGroup;
+  @Input()
+  product: Product | null | undefined;
   constructor(
     private fb: FormBuilder,
-    private productService: ProductService,
+    private store: Store,
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
     this.formGroup = this.fb.group({
@@ -60,18 +66,19 @@ export class AddProductComponent {
   }
 
   onSave() {
+    let id = '';
     if (!this.formGroup.valid) {
       alert('The data you have put in is invalid!');
     }
+    this.activatedRoute.params.subscribe((params) => (id = params['id']));
     let product = {
+      id: id,
       name: this.formGroup.get('name')?.value,
       category: this.formGroup.get('category')?.value,
       price: Number(this.formGroup.get('price')?.value),
       description: this.formGroup.get('description')?.value,
       image: this.formGroup.get('image')?.value,
     };
-    this.productService.addProduct(product).subscribe(() => {
-      this.router.navigate(['/products']);
-    });
+    this.store.dispatch(editProduct({ product: product }));
   }
 }

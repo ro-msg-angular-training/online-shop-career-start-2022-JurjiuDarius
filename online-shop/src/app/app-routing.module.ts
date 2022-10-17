@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
-import { AllProductsComponent } from './all-products/all-products.component';
+import { AllProductsComponent } from './all-products/all-products-smart/all-products.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { EditProductComponent } from './product-detail/components/edit-product/edit-product.component';
+import { ProductDetailComponent } from './product-detail/components/product-detail-smart/product-detail.component';
+import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {

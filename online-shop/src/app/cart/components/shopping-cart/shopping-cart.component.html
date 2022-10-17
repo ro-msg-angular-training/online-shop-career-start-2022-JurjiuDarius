@@ -1,0 +1,5 @@
+<app-shopping-cart-display
+  [products]="(products$ | async) || []"
+  [status]="(status$ | async) || 'error'"
+  (checkoutEvent)="onCheckout()"
+></app-shopping-cart-display>

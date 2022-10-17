@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,9 @@ import { FormGroup } from '@angular/forms';
 })
 export class LoginDisplayComponent {
   @Input()
-  formGroup: any;
+  formGroup: FormGroup | undefined;
+  @Input()
+  status: String | undefined;
   @Output()
   submitEmitter = new EventEmitter();
 

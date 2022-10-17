@@ -4,7 +4,7 @@ import { User } from '../classes/user';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserDetail } from '../classes/user-detail';
-import { CartService } from '../shopping-cart/cart.service';
+import { CartService } from '../cart/components/shopping-cart/cart.service';
 enum Roles {
   ADMIN,
   USER,
@@ -47,22 +47,5 @@ export class AuthService {
 
   public setRoles(roles: String[]) {
     this.roles = roles;
-  }
-
-  public hasGivenRole(givenRole: String): boolean {
-    if (this.roles.find((element) => element == givenRole) != undefined) {
-      return true;
-    }
-    return false;
-  }
-
-  public isLoggedIn(): boolean {
-    return this.roles.length != 0;
-  }
-
-  public logOut(): void {
-    this.roles = [];
-    this.cartService.clearCart();
-    localStorage.removeItem('roles');
   }
 }

@@ -1,0 +1,8 @@
+<router-outlet></router-outlet>
+<div *ngIf="this.route.children.length == 0">
+  <app-all-products-display
+    [status]="(status$ | async) || 'error'"
+    [products]="(products$ | async) || []"
+    [canAdd]="(canAdd() | async) || false"
+  ></app-all-products-display>
+</div>

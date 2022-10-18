@@ -1,4 +1,10 @@
-<form (ngSubmit)="onParentSubmit()" [formGroup]="formGroup">
+<form
+  *ngIf="
+    formGroup != undefined && (status === 'logged out' || status === 'error')
+  "
+  (ngSubmit)="onParentSubmit()"
+  [formGroup]="formGroup"
+>
   <label for="username">Username: </label>
   <input id="username" type="text" formControlName="username" />
 
@@ -11,3 +17,5 @@
     [disabled]="!formGroup.valid"
   />
 </form>
+<div *ngIf="status === 'pending'">Loading page...</div>
+<div *ngIf="status === 'error'">Error logging in.</div>

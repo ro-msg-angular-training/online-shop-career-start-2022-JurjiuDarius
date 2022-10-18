@@ -1,4 +1,5 @@
 <app-login-display
   [formGroup]="formGroup"
+  [status]="(status$ | async) || 'error'"
   (submitEmitter)="onSubmit()"
 ></app-login-display>

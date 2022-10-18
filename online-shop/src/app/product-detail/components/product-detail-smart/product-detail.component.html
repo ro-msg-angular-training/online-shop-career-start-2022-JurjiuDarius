@@ -1,0 +1,12 @@
+<app-product-detail-display
+  [product]="product"
+  (addToCartEvent)="onAddToCart()"
+  (deleteEvent)="onDelete()"
+  (editEvent)="activateEdit()"
+  [isAdmin]="hasGivenRole(rolesEnum.ADMIN)"
+  [isCustomer]="hasGivenRole(rolesEnum.CUSTOMER)"
+  [status]="($status | async) || 'error'"
+></app-product-detail-display>
+<div *ngIf="product && editActive$ | async">
+  <app-edit-product [product]="product"></app-edit-product>
+</div>

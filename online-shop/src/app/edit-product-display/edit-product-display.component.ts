@@ -10,7 +10,7 @@ export class EditProductDisplayComponent {
   @Input()
   formGroup: FormGroup | undefined;
   @Input()
-  product: Product | undefined;
+  product: Product | null | undefined;
   @Output()
   submitEvent = new EventEmitter();
 

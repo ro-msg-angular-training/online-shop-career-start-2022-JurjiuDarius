@@ -1,10 +1,24 @@
-<p><a routerLink="">Home</a></p>
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between">
+  <mat-toolbar-row><span i18n="@@Title">Online shop</span></mat-toolbar-row>
+  <mat-toolbar-row><a i18n="@@Home" routerLink="">Home</a></mat-toolbar-row>
 
-<p>
-  <a routerLink="/cart" *ngIf="isCustomer$ | async">Go to cart</a>
-</p>
-<div *ngIf="{ value: isLoggedIn$ | async } as context">
-  <a routerLink="/login" *ngIf="!context.value">Log in</a>
-  <button mat-button (click)="onLogOut()" *ngIf="context.value">Log Out</button>
-</div>
+  <mat-toolbar-row>
+    <a i18n="@@To cart" routerLink="/cart" *ngIf="isCustomer$ | async"
+      >Go to cart</a
+    >
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="{ value: isLoggedIn$ | async } as context">
+    <button mat-button>
+      <a i18n="@@Log in" routerLink="/login" *ngIf="!context.value">Log in</a>
+    </button>
+    <button
+      i18n="@@Log out"
+      mat-button
+      (click)="onLogOut()"
+      *ngIf="context.value"
+    >
+      Log Out
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
 <router-outlet></router-outlet>

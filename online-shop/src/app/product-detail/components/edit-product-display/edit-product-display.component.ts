@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Product } from '../classes/product';
+import { Product } from '../../../classes/product';
 
 @Component({
   selector: 'app-edit-product-display',

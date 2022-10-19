@@ -21,7 +21,7 @@ export interface AuthState {
 }
 
 export const initialAuthState: AuthState = {
-  roles: [],
+  roles: [Roles.CUSTOMER, Roles.ADMIN],
   username: '',
   status: AuthStatus.LOGGED_OUT,
 };

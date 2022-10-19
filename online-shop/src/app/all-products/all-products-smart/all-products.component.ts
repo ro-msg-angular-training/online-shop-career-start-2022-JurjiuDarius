@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { getAllProducts } from 'src/app/state/actions';
+import { selectAllProducts, selectStatus } from 'src/app/state/selectors';
 import { AuthService } from '../../auth/auth.service';
 import { hasGivenRole } from '../../auth/state/auth-selectors';
 import { Product } from '../../classes/product';
-import { getAllProducts } from '../state/all-products-actions';
-import {
-  selectAllProducts,
-  selectProductsStatus,
-} from '../state/all-products-selectors';
 
 @Component({
   selector: 'app-all-products',
@@ -26,7 +23,7 @@ export class AllProductsComponent implements OnInit {
     private store: Store
   ) {
     this.store.dispatch(getAllProducts());
-    this.status$ = this.store.select(selectProductsStatus);
+    this.status$ = this.store.select(selectStatus);
     this.products$ = this.store.select(selectAllProducts);
   }
 

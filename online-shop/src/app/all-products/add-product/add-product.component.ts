@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { addProduct } from 'src/app/state/actions';
 import { ProductService } from '../all-products-smart/product.service';
-import { addProduct } from '../state/all-products-actions';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -67,6 +67,6 @@ export class AddProductComponent {
       description: this.formGroup.get('description')?.value,
       image: this.formGroup.get('image')?.value,
     };
-    this.store.dispatch(addProduct({ product }));
+    this.store.dispatch(addProduct({ product: product }));
   }
 }

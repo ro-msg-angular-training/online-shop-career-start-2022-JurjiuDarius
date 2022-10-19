@@ -12,7 +12,7 @@
       </trans-unit>
       <trans-unit id="Products-category" datatype="html">
         <source>Category: <x id="INTERPOLATION" equiv-text="{{ product.category }}"/></source>
-        <target>Categorie:</target>
+        <target>Categorie: <x id="INTERPOLATION" equiv-text="{{ product.category }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/all-products/all-products-display/all-products-display.component.html</context>
           <context context-type="linenumber">11</context>
@@ -101,7 +101,7 @@
       </trans-unit>
       <trans-unit id="Cart-category" datatype="html">
         <source>Category: <x id="INTERPOLATION" equiv-text="{{ product.category }}"/></source>
-        <target>Categorie</target>
+        <target>Categorie: <x id="INTERPOLATION" equiv-text="{{ product.category }}"/> </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/cart/components/shopping-cart-display/shopping-cart-display.component.html</context>
           <context context-type="linenumber">7</context>
@@ -265,7 +265,7 @@
       </trans-unit>
       <trans-unit id="Detail-category" datatype="html">
         <source>Category: <x id="INTERPOLATION" equiv-text="{{ product.category }}"/></source>
-        <target>Categorie: </target>
+        <target>Categorie: <x id="INTERPOLATION" equiv-text="{{ product.category }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/product-detail/components/product-detail-display/product-detail-display.component.html</context>
           <context context-type="linenumber">3</context>

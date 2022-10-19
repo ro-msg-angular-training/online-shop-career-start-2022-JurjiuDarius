@@ -19,8 +19,6 @@ import { environment } from '../environments/environment';
 import { AddProductComponent } from './all-products/add-product/add-product.component';
 import { AllProductsDisplayComponent } from './all-products/all-products-display/all-products-display.component';
 import { AllProductsComponent } from './all-products/all-products-smart/all-products.component';
-import { AllProductsEffects } from './all-products/state/all-products-effects';
-import { allProductsReducer } from './all-products/state/all-products-reducers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginDisplayComponent } from './auth/login-display/login-display.component';
@@ -35,8 +33,8 @@ import { EditProductDisplayComponent } from './product-detail/components/edit-pr
 import { EditProductComponent } from './product-detail/components/edit-product/edit-product.component';
 import { ProductDetailDisplayComponent } from './product-detail/components/product-detail-display/product-detail-display.component';
 import { ProductDetailComponent } from './product-detail/components/product-detail-smart/product-detail.component';
-import { ProductEffects } from './product-detail/state/product-detail-effects';
-import { productDetailReducer } from './product-detail/state/product-detail-reducer';
+import { AllProductsEntityEffects } from './state/effects';
+import { productsEntityReducer } from './state/reducers';
 
 @NgModule({
   declarations: [
@@ -60,16 +58,15 @@ import { productDetailReducer } from './product-detail/state/product-detail-redu
     HttpClientModule,
     ReactiveFormsModule,
     StoreModule.forRoot({}),
-    StoreModule.forFeature('product', productDetailReducer),
+
     StoreModule.forFeature('auth', authReducer),
     StoreModule.forFeature('cart', cartReducer),
-    StoreModule.forFeature('products', allProductsReducer),
+    StoreModule.forFeature('products-entity', productsEntityReducer),
     EffectsModule.forRoot([]),
     EffectsModule.forFeature([
-      ProductEffects,
       AuthEffects,
       CartEffects,
-      AllProductsEffects,
+      AllProductsEntityEffects,
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

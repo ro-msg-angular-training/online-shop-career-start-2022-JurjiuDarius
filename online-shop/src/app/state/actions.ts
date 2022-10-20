@@ -4,11 +4,11 @@ import { Product } from '../classes/product';
 
 export const getAllProducts = createAction('[All products] Get products');
 export const getAllProductsSuccess = createAction(
-  '[All products] Get products Success',
+  '[Products API] Get products Success',
   props<{ products: Product[] }>()
 );
 export const getAllProductsFailure = createAction(
-  '[All products] Get products Failure',
+  '[Products API] Get products Failure',
   props<{ error: String }>()
 );
 export const addProduct = createAction(
@@ -16,11 +16,11 @@ export const addProduct = createAction(
   props<{ product: Product }>()
 );
 export const addProductSuccess = createAction(
-  '[All products] Create Action Success',
+  '[Products API] Create Action Success',
   props<{ product: Product }>()
 );
 export const addProductFailure = createAction(
-  '[All products] Create Action Failure',
+  '[Products API] Create Action Failure',
   props<{ error: String }>()
 );
 
@@ -31,7 +31,7 @@ export const loadProduct = createAction(
 
 export const loadProductSuccess = createAction(
   '[Product Api] Product Load Success',
-  props<{ loadedProduct: Update<Product> | undefined }>()
+  props<{ product: Update<Product> | undefined }>()
 );
 export const loadProductFailure = createAction(
   '[Product Api] Product Load Failure',

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 
 import { EditProductComponent } from './edit-product.component';
 
@@ -8,9 +9,9 @@ describe('EditProductComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditProductComponent ]
-    })
-    .compileComponents();
+      declarations: [EditProductComponent],
+      imports: [AppModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EditProductComponent);
     component = fixture.componentInstance;

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 import { AllProductsComponent } from './all-products.component';
 
 describe('AllProductsComponent', () => {
@@ -8,6 +9,7 @@ describe('AllProductsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AllProductsComponent],
+      imports: [AppModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AllProductsComponent);

@@ -5,8 +5,10 @@
   "projects": {
     "online-shop": {
       "i18n": {
-        "sourceLocale":"en-US",
-        "locales": {"ro":"src/locale/messages.ro.xlf"}
+        "sourceLocale": "en-US",
+        "locales": {
+          "ro": "src/locale/messages.ro.xlf"
+        }
       },
       "projectType": "application",
       "schematics": {
@@ -21,7 +23,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize":["ro"],
+            "localize": [
+              "ro"
+            ],
             "outputPath": "dist/online-shop",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -68,10 +72,10 @@
               "sourceMap": true,
               "namedChunks": true
             },
-            "ro":{"localize":true}
+            "ro": {
+              "localize": true
+            }
           },
-        
-        
           "defaultConfiguration": "production"
         },
         "serve": {
@@ -109,6 +113,37 @@
               "src/styles.sass"
             ],
             "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "online-shop:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "online-shop:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "online-shop:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "online-shop:serve:production"
+            }
           }
         }
       }

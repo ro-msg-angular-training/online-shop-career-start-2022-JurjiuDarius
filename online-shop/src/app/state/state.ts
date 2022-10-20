@@ -12,7 +12,7 @@ export interface ProductsEntityState extends EntityState<Product> {
   isEditActive: boolean;
   selectedProductId: String;
 }
-export const productsEntityAdapter = createEntityAdapter<Product>();
+export const productsEntityAdapter = createEntityAdapter<Product>({});
 export const initialProductsEntityState = productsEntityAdapter.getInitialState(
   {
     error: '',

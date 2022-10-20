@@ -10,6 +10,7 @@ import {
   editProduct,
   editProductFailure,
   editProductSuccess,
+  getAllProducts,
   getAllProductsFailure,
   getAllProductsSuccess,
   loadProduct,
@@ -24,6 +25,12 @@ import {
 
 export const productsEntityReducer = createReducer(
   initialProductsEntityState,
+  on(getAllProducts, (state) => {
+    return {
+      ...state,
+      status: ProductsStatus.PENDING,
+    };
+  }),
   on(getAllProductsSuccess, (state, content) => {
     return {
       ...productsEntityAdapter.addMany(content.products, state),
@@ -55,15 +62,15 @@ export const productsEntityReducer = createReducer(
     return { ...state, status: ProductsStatus.PENDING };
   }),
 
-  on(loadProductSuccess, (state, { loadedProduct }) => {
-    if (loadedProduct == undefined) {
+  on(loadProductSuccess, (state, { product }) => {
+    if (product == undefined) {
       return {
         ...state,
         status: ProductsStatus.SUCCESS,
       };
     }
     return {
-      ...productsEntityAdapter.updateOne(loadedProduct, state),
+      ...productsEntityAdapter.updateOne(product, state),
       error: '',
       status: ProductsStatus.SUCCESS,
     };

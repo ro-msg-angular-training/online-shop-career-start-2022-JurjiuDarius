@@ -76,7 +76,7 @@ export class AllProductsEntityEffects {
           return this.productService.getProductById(action.id).pipe(
             map((product) =>
               loadProductSuccess({
-                loadedProduct: {
+                product: {
                   id: String(product.id),
                   changes: { ...product },
                 },
@@ -86,7 +86,7 @@ export class AllProductsEntityEffects {
           );
         }
         console.log('already loaded');
-        return of(loadProductSuccess({ loadedProduct: undefined }));
+        return of(loadProductSuccess({ product: undefined }));
       })
     )
   );

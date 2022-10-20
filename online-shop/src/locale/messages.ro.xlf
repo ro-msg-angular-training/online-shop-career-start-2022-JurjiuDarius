@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="Products-add" datatype="html">
         <source> Add a new product</source>
-        <target>Adaugti un produs nou</target>
+        <target>Adaugati un produs nou</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/all-products/all-products-display/all-products-display.component.html</context>
           <context context-type="linenumber">2,3</context>

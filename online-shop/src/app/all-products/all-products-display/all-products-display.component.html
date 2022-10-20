@@ -1,11 +1,13 @@
-<div *ngIf="status == statusEnum.SUCCESS">
+<div id="all-products-div" *ngIf="status == statusEnum.SUCCESS">
   <a routerLink="/products/add" *ngIf="canAdd" i18n="@@Products-add">
     Add a new product</a
   >
 
-  <mat-card *ngFor="let product of products" color="primary">
+  <mat-card id="product-card" *ngFor="let product of products" color="primary">
     <mat-card-header color="primary">
-      <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+      <a id="product-link" [routerLink]="['/products', product.id]">{{
+        product.name
+      }}</a>
     </mat-card-header>
     <mat-card-content>
       <p i18n="@@Products-category">Category: {{ product.category }}</p>

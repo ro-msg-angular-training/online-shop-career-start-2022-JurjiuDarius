@@ -1,19 +1,36 @@
 <div *ngIf="product != undefined && status == statusEnum.SUCCESS">
   <h2>{{ product.name }}</h2>
-  <h3>Category: {{ product.category }}</h3>
+  <h3 i18n="@@Detail-category">Category: {{ product.category }}</h3>
   <h3>${{ product.price }}</h3>
-  <h3>${{ product.description }}</h3>
+  <h3>{{ product.description }}</h3>
   <img src="{{ product.image }}" />
   <h3>
-    <button (click)="parentOnActivateEdit()" *ngIf="isAdmin">
-      Edit this product
+    <button mat-fab (click)="parentOnActivateEdit()" *ngIf="isAdmin">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="edit"
+      ></mat-icon>
     </button>
   </h3>
-  <h3><a routerLink="/products">Back to all products</a></h3>
-  <button (click)="parentOnAddToCart()" *ngIf="isCustomer">Add to cart</button>
-  <button (click)="parentOnDelete()" *ngIf="isAdmin">
+  <h3>
+    <a i18n="@@Detail-backToAll" routerLink="/products">Back to all products</a>
+  </h3>
+  <button
+    i18n="@@Add to cart"
+    mat-button
+    (click)="parentOnAddToCart()"
+    *ngIf="isCustomer"
+  >
+    Add to cart
+  </button>
+  <button i18n="@@Delete" mat-button (click)="parentOnDelete()" *ngIf="isAdmin">
     Delete this product
   </button>
 </div>
-<div *ngIf="status == 'statusEnum.PENDING'">Page is loading...</div>
-<div *ngIf="status == 'statusEnum.ERROR'">An error has occured.</div>
+<div i18n="@@Detail-loading" *ngIf="status == 'statusEnum.PENDING'">
+  Page is loading...
+</div>
+<div i18n="@@Detail-error" *ngIf="status == 'statusEnum.ERROR'">
+  An error has occured.
+</div>

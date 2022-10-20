@@ -1,0 +1,133 @@
+<form *ngIf="formGroup" (ngSubmit)="onParentSubmit()" [formGroup]="formGroup">
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label i18n="@@Edit-name">Name</mat-label>
+    <input
+      matInput
+      id="name"
+      type="text"
+      formControlName="name"
+      value="{{ product?.name }}"
+    />
+    <mat-error
+      *ngIf="formGroup.get('name')?.errors?.['required']"
+      i18n="@@Edit-required"
+      >The field is required</mat-error
+    >
+    <mat-error
+      *ngIf="formGroup.get('name')?.errors?.['minlength']"
+      i18n="@@Edit-short"
+      >Too short!</mat-error
+    >
+    <mat-error
+      *ngIf="formGroup.get('name')?.errors?.['maxlength']"
+      i18n="@@Edit-long"
+      >Too long!</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label i18n="@@Edit-category">Category</mat-label>
+    <input
+      matInput
+      id="category"
+      type="text"
+      formControlName="category"
+      value="{{ product?.category }}"
+    />
+    <mat-error
+      *ngIf="formGroup.get('category')?.errors?.['required']"
+      i18n="@@Edit-required"
+      >The field is required</mat-error
+    >
+    <mat-error
+      *ngIf="formGroup.get('category')?.errors?.['minlength']"
+      i18n="@@Edit-short"
+      >Too short!</mat-error
+    >
+    <mat-error
+      *ngIf="formGroup.get('category')?.errors?.['maxlength']"
+      i18n="@@Edit-long"
+      >Too long!</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label i18n="@@Edit-price">Price</mat-label>
+    <input
+      matInput
+      id="price"
+      type="text"
+      formControlName="price"
+      value="{{ product?.price }}"
+    />
+    <mat-error
+      *ngIf="formGroup.get('price')?.errors?.['required']"
+      i18n="@@Edit-required"
+      >The field is required</mat-error
+    >
+    <mat-error
+      *ngIf="formGroup.get('price')?.errors?.['min']"
+      i18n="@@Edit-small"
+      >Number is too small!</mat-error
+    >
+    <mat-error *ngIf="formGroup.get('price')?.errors?.['max']" i18n="@@Edit-big"
+      >Number is too big!</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label i18n="@@Edit-description">Description</mat-label>
+    <input
+      matInput
+      id="description"
+      type="text"
+      formControlName="description"
+      value="{{ product?.description }}"
+    />
+    <mat-error
+      *ngIf="formGroup.get('description')?.errors?.['required']"
+      i18n="@@Edit-required"
+      >The field is required</mat-error
+    >
+    <mat-error
+      *ngIf="formGroup.get('description')?.errors?.['minlength']"
+      i18n="@@Edit-short"
+      >Too short!</mat-error
+    >
+    <mat-error
+      *ngIf="formGroup.get('description')?.errors?.['maxlength']"
+      i18n="@@Edit-long"
+      >Too long!</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label i18n="@@Edit-image">Image URL</mat-label>
+    <input
+      matInput
+      id="image"
+      type="text"
+      formControlName="image"
+      value="{{ product?.image }}"
+    />
+    <mat-error
+      *ngIf="formGroup.get('image')?.errors?.['required']"
+      i18n="@@Edit-required"
+      >The field is required</mat-error
+    >
+    <mat-error
+      *ngIf="formGroup.get('image')?.errors?.['minlength']"
+      i18n="@@Edit-short"
+      >Too short!</mat-error
+    >
+    <mat-error
+      *ngIf="formGroup.get('image')?.errors?.['maxlength']"
+      i18n="@@Edit-long"
+      >Too long!</mat-error
+    >
+  </mat-form-field>
+
+  <input
+    type="submit"
+    class="forsubmit"
+    value="Submit"
+    [disabled]="!formGroup.valid"
+  />
+</form>

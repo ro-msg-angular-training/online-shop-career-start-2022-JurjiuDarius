@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="Products-add" datatype="html">
+        <source> Add a new product</source>
+        <target>Adaugti un produs nou</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/all-products/all-products-display/all-products-display.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Products-category" datatype="html">
+        <source>Category: <x id="INTERPOLATION" equiv-text="{{ product.category }}"/></source>
+        <target>Categorie:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/all-products/all-products-display/all-products-display.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Products-loading" datatype="html">
+        <source> Loading page...
+</source>
+<target>Se incarca</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/all-products/all-products-display/all-products-display.component.html</context>
+          <context context-type="linenumber">16,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Title" datatype="html">
+        <source>Online shop</source>
+        <target>Magazin online</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Home" datatype="html">
+        <source>Home</source>
+        <target>Acasa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="To cart" datatype="html">
+        <source>Go to cart</source>
+        <target>Cos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Log in" datatype="html">
+        <source>Log in</source>
+        <target>Logare</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Log out" datatype="html">
+        <source> Log Out </source>
+        <target>Delogare</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Login-username" datatype="html">
+        <source>Username: </source>
+        <target>Nume utilizatior: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login-display/login-display.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Login-password" datatype="html">
+        <source>Password: </source>
+        <target>Parola: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login-display/login-display.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Login-loading" datatype="html">
+        <source>Loading page...</source>
+        <target>Se incarca...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login-display/login-display.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Login-error" datatype="html">
+        <source>Error logging in.</source>
+        <target>Eroare la logare.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login-display/login-display.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cart-category" datatype="html">
+        <source>Category: <x id="INTERPOLATION" equiv-text="{{ product.category }}"/></source>
+        <target>Categorie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/cart/components/shopping-cart-display/shopping-cart-display.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cart-loading" datatype="html">
+        <source> Loading page...
+</source>
+<target>Se incarca...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/cart/components/shopping-cart-display/shopping-cart-display.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cart-processing" datatype="html">
+        <source> Processing...
+</source>
+<target>In curs de procesare...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/cart/components/shopping-cart-display/shopping-cart-display.component.html</context>
+          <context context-type="linenumber">15,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cart-error" datatype="html">
+        <source> An error has occured.
+</source>
+<target>Eroare.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/cart/components/shopping-cart-display/shopping-cart-display.component.html</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cart-checkout" datatype="html">
+        <source> Check out
+</source>
+<target>Plasare comanda</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/cart/components/shopping-cart-display/shopping-cart-display.component.html</context>
+          <context context-type="linenumber">26,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-name" datatype="html">
+        <source>Name</source>
+        <target>Nume</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-required" datatype="html">
+        <source>The field is required</source>
+        <target>Campul este necesar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-short" datatype="html">
+        <source>Too short!</source>
+        <target>Prea scurt!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-long" datatype="html">
+        <source>Too long!</source>
+        <target>Prea lung!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-category" datatype="html">
+        <source>Category</source>
+        <target>Categorie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-price" datatype="html">
+        <source>Price</source>
+        <target>Pret</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-small" datatype="html">
+        <source>Number is too small!</source>
+        <target>Numarul este prea mic!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-big" datatype="html">
+        <source>Number is too big!</source>
+        <target>Numarul este prea mare!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-description" datatype="html">
+        <source>Description</source>
+        <target>Descriere</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Edit-image" datatype="html">
+        <source>Image URL</source>
+        <target>URL imagine</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/edit-product-display/edit-product-display.component.html</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Detail-category" datatype="html">
+        <source>Category: <x id="INTERPOLATION" equiv-text="{{ product.category }}"/></source>
+        <target>Categorie: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/product-detail-display/product-detail-display.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Detail-backToAll" datatype="html">
+        <source>Back to all products</source>
+        <target>Inapoi la produse</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/product-detail-display/product-detail-display.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Add to cart" datatype="html">
+        <source> Add to cart </source>
+        <target>Adaugati produsul in cos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/product-detail-display/product-detail-display.component.html</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Delete" datatype="html">
+        <source> Delete this product </source>
+        <target>Stergere produs</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/product-detail-display/product-detail-display.component.html</context>
+          <context context-type="linenumber">21,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Detail-loading" datatype="html">
+        <source> Page is loading...
+</source>
+<target>Se incarca...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/product-detail-display/product-detail-display.component.html</context>
+          <context context-type="linenumber">25,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Detail-error" datatype="html">
+        <source> An error has occured.
+</source>
+<target>Eroare</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/product-detail/components/product-detail-display/product-detail-display.component.html</context>
+          <context context-type="linenumber">28,30</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

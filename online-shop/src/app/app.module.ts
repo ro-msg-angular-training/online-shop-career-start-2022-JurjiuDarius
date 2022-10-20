@@ -2,9 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -25,7 +31,7 @@ import { ShoppingCartDisplayComponent } from './cart/components/shopping-cart-di
 import { ShoppingCartComponent } from './cart/components/shopping-cart/shopping-cart.component';
 import { CartEffects } from './cart/state/cart-effects';
 import { cartReducer } from './cart/state/cart-reducers';
-import { EditProductDisplayComponent } from './edit-product-display/edit-product-display.component';
+import { EditProductDisplayComponent } from './product-detail/components/edit-product-display/edit-product-display.component';
 import { EditProductComponent } from './product-detail/components/edit-product/edit-product.component';
 import { ProductDetailDisplayComponent } from './product-detail/components/product-detail-display/product-detail-display.component';
 import { ProductDetailComponent } from './product-detail/components/product-detail-smart/product-detail.component';
@@ -48,6 +54,7 @@ import { productDetailReducer } from './product-detail/state/product-detail-redu
     LoginDisplayComponent,
   ],
   imports: [
+    FlexLayoutModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -71,6 +78,11 @@ import { productDetailReducer } from './product-detail/state/product-detail-redu
     BrowserAnimationsModule,
     MatButtonModule,
     MatTableModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
   ],
   bootstrap: [AppComponent],
 })

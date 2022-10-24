@@ -7,6 +7,6 @@
   [isCustomer]="hasGivenRole(rolesEnum.CUSTOMER)"
   [status]="($status | async) || 'error'"
 ></app-product-detail-display>
-<div *ngIf="product && editActive$ | async">
+<div *ngIf="editActive$ | async">
   <app-edit-product [product]="product"></app-edit-product>
 </div>

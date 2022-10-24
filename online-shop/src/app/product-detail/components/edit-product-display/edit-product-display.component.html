@@ -1,13 +1,7 @@
 <form *ngIf="formGroup" (ngSubmit)="onParentSubmit()" [formGroup]="formGroup">
   <mat-form-field class="form-field" appearance="outline">
     <mat-label i18n="@@Edit-name">Name</mat-label>
-    <input
-      matInput
-      id="name"
-      type="text"
-      formControlName="name"
-      value="{{ product?.name }}"
-    />
+    <input matInput id="name" type="text" formControlName="name" />
     <mat-error
       *ngIf="formGroup.get('name')?.errors?.['required']"
       i18n="@@Edit-required"
@@ -26,13 +20,7 @@
   </mat-form-field>
   <mat-form-field class="form-field" appearance="outline">
     <mat-label i18n="@@Edit-category">Category</mat-label>
-    <input
-      matInput
-      id="category"
-      type="text"
-      formControlName="category"
-      value="{{ product?.category }}"
-    />
+    <input matInput id="category" type="text" formControlName="category" />
     <mat-error
       *ngIf="formGroup.get('category')?.errors?.['required']"
       i18n="@@Edit-required"
@@ -51,13 +39,7 @@
   </mat-form-field>
   <mat-form-field class="form-field" appearance="outline">
     <mat-label i18n="@@Edit-price">Price</mat-label>
-    <input
-      matInput
-      id="price"
-      type="text"
-      formControlName="price"
-      value="{{ product?.price }}"
-    />
+    <input matInput id="price" type="text" formControlName="price" />
     <mat-error
       *ngIf="formGroup.get('price')?.errors?.['required']"
       i18n="@@Edit-required"
@@ -80,7 +62,6 @@
       id="description"
       type="text"
       formControlName="description"
-      value="{{ product?.description }}"
     />
     <mat-error
       *ngIf="formGroup.get('description')?.errors?.['required']"
@@ -100,13 +81,7 @@
   </mat-form-field>
   <mat-form-field class="form-field" appearance="outline">
     <mat-label i18n="@@Edit-image">Image URL</mat-label>
-    <input
-      matInput
-      id="image"
-      type="text"
-      formControlName="image"
-      value="{{ product?.image }}"
-    />
+    <input matInput id="image" type="text" formControlName="image" />
     <mat-error
       *ngIf="formGroup.get('image')?.errors?.['required']"
       i18n="@@Edit-required"

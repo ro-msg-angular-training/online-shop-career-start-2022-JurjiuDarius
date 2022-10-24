@@ -1,21 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../../../classes/product';
-import { ProductService } from '../../../all-products/all-products-smart/product.service';
-import { switchMap } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { editProduct } from '../../state/product-detail-actions';
+import { editProduct } from 'src/app/state/actions';
+import { Product } from '../../../classes/product';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
 })
-export class EditProductComponent {
+export class EditProductComponent implements OnInit {
   formGroup: FormGroup;
   @Input()
   product: Product | null | undefined;
@@ -63,6 +56,13 @@ export class EditProductComponent {
         ],
       ],
     });
+  }
+  ngOnInit(): void {
+    this.formGroup.get('name')?.setValue(this.product?.name);
+    this.formGroup.get('category')?.setValue(this.product?.category);
+    this.formGroup.get('price')?.setValue(this.product?.price);
+    this.formGroup.get('description')?.setValue(this.product?.description);
+    this.formGroup.get('image')?.setValue(this.product?.image);
   }
 
   onSave() {

@@ -20,7 +20,6 @@ export class AppComponent {
   isCustomer$: Observable<Boolean> | undefined;
   constructor(public authService: AuthService, private store: Store) {
     this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
-    this.isLoggedIn$.subscribe((res) => console.log(res));
     this.store.select(selectRoles).subscribe((res) => (this.roles = res));
     this.isCustomer$ = this.store.select(hasGivenRole(Roles.CUSTOMER));
   }
